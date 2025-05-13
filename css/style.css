@@ -6,15 +6,16 @@
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    background-color: #f4f4f4;
+    background-color: #000;
+    color: #e7e9ea;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #333;
-    color: white;
+    background-color: rgba(0, 0, 0, 0.95);
+    color: #e7e9ea;
     padding: 1rem;
     display: flex;
     justify-content: space-between;
@@ -23,93 +24,107 @@ body {
     width: 100%;
     top: 0;
     z-index: 1000;
+    border-bottom: 1px solid #2f3336;
 }
 
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
+    color: #1d9bf0;
 }
 
 .nav-links a {
-    color: white;
+    color: #e7e9ea;
     text-decoration: none;
     margin-left: 1rem;
     transition: color 0.3s;
+    font-weight: 500;
 }
 
 .nav-links a:hover {
-    color: #ddd;
+    color: #1d9bf0;
 }
 
 /* Container des produits */
 .products-container {
     max-width: 1200px;
-    margin: 2rem auto;
+    margin: 80px auto 2rem;
     padding: 0 1rem;
 }
 
 .products-container h2 {
-    text-align: center;
+    text-align: left;
     margin-bottom: 2rem;
-    color: #333;
+    color: #e7e9ea;
+    font-size: 20px;
+    font-weight: 800;
+    padding: 1rem;
+    border-bottom: 1px solid #2f3336;
 }
 
 /* Grille de produits */
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 2rem;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
 }
 
 /* Carte de produit */
 .product-card {
-    background: white;
-    border-radius: 8px;
+    background: #000;
+    border: 1px solid #2f3336;
+    border-radius: 16px;
     overflow: hidden;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    transition: transform 0.3s ease;
+    transition: background-color 0.2s;
 }
 
 .product-card:hover {
-    transform: translateY(-5px);
+    background-color: rgba(255, 255, 255, 0.03);
 }
 
 .product-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    border-bottom: 1px solid #2f3336;
 }
 
 .product-card h3 {
     padding: 1rem;
-    color: #333;
+    color: #e7e9ea;
+    font-size: 16px;
+    font-weight: 700;
 }
 
 .product-card p {
     padding: 0 1rem;
-    color: #666;
+    color: #71767b;
+    font-size: 14px;
 }
 
 .product-card .price {
     font-weight: bold;
-    color: #2c3e50;
+    color: #1d9bf0;
     font-size: 1.2rem;
-    margin: 0.5rem 0;
+    margin: 0.5rem 1rem;
 }
 
 .product-card .add-to-cart {
     display: block;
-    width: 100%;
+    width: calc(100% - 2rem);
+    margin: 1rem;
     padding: 0.8rem;
-    background-color: #3498db;
+    background-color: #1d9bf0;
     color: white;
     border: none;
+    border-radius: 9999px;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    font-weight: 700;
+    transition: background-color 0.2s;
 }
 
 .product-card .add-to-cart:hover {
-    background-color: #2980b9;
+    background-color: #1a8cd8;
 }
 
 /* Bouton de chat flottant */
@@ -117,10 +132,10 @@ body {
     position: fixed;
     bottom: 2rem;
     right: 2rem;
-    width: 60px;
-    height: 60px;
+    width: 56px;
+    height: 56px;
     border-radius: 50%;
-    background-color: #3498db;
+    background-color: #1d9bf0;
     color: white;
     border: none;
     cursor: pointer;
@@ -129,6 +144,11 @@ body {
     align-items: center;
     justify-content: center;
     font-size: 1.5rem;
+    transition: background-color 0.2s;
+}
+
+.chat-button:hover {
+    background-color: #1a8cd8;
 }
 
 /* Modal de chat */
@@ -137,86 +157,93 @@ body {
     position: fixed;
     bottom: 5rem;
     right: 2rem;
-    width: 300px;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-    animation: slideIn 0.3s ease-out;
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(100%);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
+    width: 350px;
+    background: #000;
+    border-radius: 16px;
+    box-shadow: 0 0 10px rgba(255,255,255,0.1);
+    border: 1px solid #2f3336;
 }
 
 .chat-header {
     padding: 1rem;
-    background: #3498db;
-    color: white;
+    background: #000;
+    color: #e7e9ea;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 1px solid #2f3336;
+    border-radius: 16px 16px 0 0;
 }
 
 .close-button {
     background: none;
     border: none;
-    color: white;
+    color: #71767b;
     font-size: 1.5rem;
     cursor: pointer;
 }
 
 .chat-messages {
-    height: 300px;
+    height: 350px;
     overflow-y: auto;
     padding: 1rem;
+    background-color: #000;
 }
 
 .chat-input {
     padding: 1rem;
     display: flex;
     gap: 0.5rem;
+    border-top: 1px solid #2f3336;
 }
 
 .chat-input input {
     flex: 1;
-    padding: 0.5rem;
-    border: 1px solid #ddd;
-    border-radius: 4px;
+    padding: 0.75rem;
+    border: 1px solid #2f3336;
+    border-radius: 9999px;
+    background: #000;
+    color: #e7e9ea;
+}
+
+.chat-input input:focus {
+    outline: none;
+    border-color: #1d9bf0;
 }
 
 .chat-input button {
-    padding: 0.5rem 1rem;
-    background: #3498db;
+    padding: 0.75rem 1.25rem;
+    background: #1d9bf0;
     color: white;
     border: none;
-    border-radius: 4px;
+    border-radius: 9999px;
     cursor: pointer;
+    font-weight: 700;
+}
+
+.chat-input button:hover {
+    background-color: #1a8cd8;
 }
 
 /* Message styles */
 .message {
     margin-bottom: 1rem;
     padding: 0.8rem;
-    border-radius: 8px;
+    border-radius: 16px;
     max-width: 80%;
 }
 
 .user-message {
-    background-color: #e3f2fd;
+    background-color: #1d9bf0;
+    color: white;
     margin-left: auto;
 }
 
 .bot-message {
-    background-color: #f1f1f1;
+    background-color: #2f3336;
+    color: #e7e9ea;
     margin-right: auto;
-} 
+}
 
 .message.loading {
     opacity: 0.7;
@@ -232,4 +259,22 @@ body {
     0% { content: '.'; }
     33% { content: '..'; }
     66% { content: '...'; }
+}
+
+/* Scrollbar personnalisée */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #000;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #2f3336;
+    border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #3f4346;
 }

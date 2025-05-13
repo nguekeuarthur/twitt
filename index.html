@@ -10,17 +10,19 @@
 <body>
     <!-- Navbar -->
     <nav class="navbar">
-        <div class="logo">Mon E-commerce</div>
+        <div class="logo">
+            <i class="fab fa-twitter"></i>
+        </div>
         <div class="nav-links">
-            <a href="index.html">Accueil</a>
-            <a href="contact.php">Contact</a>
-            <a href="compte.php">Mon Compte</a>
+            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
+            <a href="contact.php"><i class="fas fa-envelope"></i> Contact</a>
+            <a href="compte.php"><i class="fas fa-user"></i> Mon Compte</a>
         </div>
     </nav>
 
     <!-- Liste des produits -->
     <div class="products-container">
-        <h2>Nos Produits</h2>
+        <h2>Pour vous</h2>
         <div class="products-grid" id="products-grid">
             <!-- Les produits seront chargés dynamiquement via JavaScript -->
         </div>
@@ -28,24 +30,26 @@
 
     <!-- Bouton flottant du service client -->
     <button class="chat-button" id="chatButton">
-        <i class="fas fa-comments"></i>
+        <i class="fas fa-message"></i>
     </button>
 
     <!-- Chat modal -->
     <div class="chat-modal" id="chatModal">
         <div class="chat-header">
-            <h3>Service Client</h3>
+            <h3>Messages</h3>
             <button class="close-button" id="closeChat">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages">
             <!-- Les messages seront affichés ici -->
         </div>
         <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Tapez votre message...">
-            <button id="sendMessage">Envoyer</button>
+            <input type="text" id="userInput" placeholder="Commencez une discussion...">
+            <button id="sendMessage">
+                <i class="fas fa-paper-plane"></i>
+            </button>
         </div>
     </div>
 
     <script src="js/script.js"></script>
 </body>
-</html> 
+</html>
