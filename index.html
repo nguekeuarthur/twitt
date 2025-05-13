@@ -15,12 +15,38 @@
                 <i class="fab fa-twitter"></i>
             </div>
             <div class="nav-items">
-                <a href="#" class="active"><i class="fas fa-home"></i> Accueil</a>
-                <a href="#"><i class="fas fa-search"></i> Explorer</a>
-                <a href="#"><i class="fas fa-bell"></i> Notifications</a>
-                <a href="#"><i class="fas fa-envelope"></i> Messages</a>
-                <a href="#"><i class="fas fa-bookmark"></i> Signets</a>
-                <a href="#"><i class="fas fa-user"></i> Profil</a>
+                <a href="#" class="active">
+                    <i class="fas fa-home"></i>
+                    <span>Accueil</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-search"></i>
+                    <span>Explorer</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-bell"></i>
+                    <span>Notifications</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-envelope"></i>
+                    <span>Messages</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-bookmark"></i>
+                    <span>Signets</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-list"></i>
+                    <span>Listes</span>
+                </a>
+                <a href="#">
+                    <i class="fas fa-user"></i>
+                    <span>Profil</span>
+                </a>
+                <a href="#" id="openChat">
+                    <i class="fas fa-comments"></i>
+                    <span>Service Client</span>
+                </a>
                 <button class="tweet-btn">Tweeter</button>
             </div>
         </nav>
@@ -49,9 +75,7 @@
             </div>
 
             <!-- Tweet Feed -->
-            <div class="feed" id="tweet-feed">
-                <!-- Les tweets seront chargés dynamiquement via JavaScript -->
-            </div>
+            <div class="feed" id="tweet-feed"></div>
         </main>
 
         <!-- Trending Section -->
@@ -63,29 +87,25 @@
             
             <div class="trends-container">
                 <h2>Tendances pour vous</h2>
-                <div class="trends-list" id="trends-list">
-                    <!-- Les tendances seront chargées dynamiquement -->
-                </div>
+                <div class="trends-list" id="trends-list"></div>
             </div>
 
             <div class="who-to-follow">
                 <h2>Suggestions</h2>
-                <div class="suggestions-list" id="suggestions-list">
-                    <!-- Les suggestions seront chargées dynamiquement -->
-                </div>
+                <div class="suggestions-list" id="suggestions-list"></div>
             </div>
         </aside>
     </div>
 
-    <!-- Chat modal -->
+    <!-- Chat Modal -->
     <div class="chat-modal" id="chatModal">
         <div class="chat-header">
-            <h3>Messages</h3>
-            <button class="close-button" id="closeChat">&times;</button>
+            <h3>Service Client</h3>
+            <button id="closeChat">&times;</button>
         </div>
         <div class="chat-messages" id="chatMessages"></div>
         <div class="chat-input">
-            <input type="text" id="userInput" placeholder="Commencez une discussion...">
+            <input type="text" id="userInput" placeholder="Écrivez votre message...">
             <button id="sendMessage">
                 <i class="fas fa-paper-plane"></i>
             </button>

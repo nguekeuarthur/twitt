@@ -31,7 +31,7 @@ body {
 
 .logo {
     font-size: 2rem;
-    color: #1d9bf0;
+    color: #e7e9ea;
     padding: 0.75rem;
     margin-bottom: 0.5rem;
 }
@@ -73,6 +73,7 @@ body {
     margin-top: 1rem;
     cursor: pointer;
     transition: background-color 0.2s;
+    width: 90%;
 }
 
 .tweet-btn:hover {
@@ -139,7 +140,6 @@ body {
     justify-content: space-between;
     align-items: center;
     padding-top: 0.5rem;
-    border-top: 1px solid #2f3336;
     margin-top: 0.5rem;
 }
 
@@ -183,12 +183,15 @@ body {
 }
 
 .tweet-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
     margin-bottom: 0.25rem;
 }
 
 .tweet-header .author {
     font-weight: 700;
-    margin-right: 0.5rem;
+    color: #e7e9ea;
 }
 
 .tweet-header .handle,
@@ -198,6 +201,7 @@ body {
 
 .tweet-text {
     margin-bottom: 0.5rem;
+    color: #e7e9ea;
 }
 
 .tweet-image {
@@ -206,23 +210,23 @@ body {
     margin: 0.5rem 0;
 }
 
-.tweet-actions {
+.tweet-stats {
     display: flex;
     justify-content: space-between;
     max-width: 425px;
     margin-top: 0.5rem;
 }
 
-.tweet-action {
-    color: #71767b;
+.tweet-stat {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    color: #71767b;
     cursor: pointer;
     transition: color 0.2s;
 }
 
-.tweet-action:hover {
+.tweet-stat:hover {
     color: #1d9bf0;
 }
 
@@ -231,11 +235,13 @@ body {
     padding: 0 1rem;
     position: fixed;
     margin-left: 1rem;
+    width: 350px;
 }
 
 .search-box {
     position: relative;
     margin: 0.5rem 0;
+    width: 100%;
 }
 
 .search-box input {
@@ -245,6 +251,12 @@ body {
     border: 1px solid transparent;
     border-radius: 9999px;
     color: #e7e9ea;
+}
+
+.search-box input:focus {
+    background-color: #000;
+    border-color: #1d9bf0;
+    outline: none;
 }
 
 .search-box i {
@@ -267,6 +279,7 @@ body {
     font-size: 1.25rem;
     font-weight: 800;
     padding: 1rem;
+    color: #e7e9ea;
 }
 
 .trend-item,
@@ -288,6 +301,7 @@ body {
 }
 
 .trend-tag {
+    color: #e7e9ea;
     font-weight: 700;
     margin: 0.25rem 0;
 }
@@ -309,6 +323,7 @@ body {
 }
 
 .suggestion-name {
+    color: #e7e9ea;
     font-weight: 700;
 }
 
@@ -328,7 +343,6 @@ body {
 
 /* Chat Modal */
 .chat-modal {
-    display: none;
     position: fixed;
     bottom: 1rem;
     right: 1rem;
@@ -346,6 +360,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    color: #e7e9ea;
 }
 
 .chat-messages {
@@ -369,6 +384,7 @@ body {
 
 .bot-message {
     background-color: #2f3336;
+    color: #e7e9ea;
     margin-right: auto;
 }
 

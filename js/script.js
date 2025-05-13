@@ -30,8 +30,8 @@ const tweets = [
     },
     {
         id: 3,
-        author: "Tech Insights",
-        handle: "@techinsights",
+        author: "Tech News",
+        handle: "@technews",
         avatar: "https://picsum.photos/50?random=3",
         content: "Les dernières avancées en IA sont vraiment impressionnantes ! #AI #tech",
         time: "6h",
@@ -110,24 +110,24 @@ function displayTweets() {
                 <div class="tweet-header">
                     <span class="author">${tweet.author}</span>
                     <span class="handle">${tweet.handle}</span>
-                    <span class="time">${tweet.time}</span>
+                    <span class="time">· ${tweet.time}</span>
                 </div>
                 <div class="tweet-text">${tweet.content}</div>
                 ${imageHtml}
-                <div class="tweet-actions">
-                    <div class="tweet-action">
+                <div class="tweet-stats">
+                    <div class="tweet-stat">
                         <i class="far fa-comment"></i>
                         <span>${tweet.stats.replies}</span>
                     </div>
-                    <div class="tweet-action">
+                    <div class="tweet-stat">
                         <i class="fas fa-retweet"></i>
                         <span>${tweet.stats.retweets}</span>
                     </div>
-                    <div class="tweet-action">
+                    <div class="tweet-stat">
                         <i class="far fa-heart"></i>
                         <span>${tweet.stats.likes}</span>
                     </div>
-                    <div class="tweet-action">
+                    <div class="tweet-stat">
                         <i class="fas fa-share"></i>
                     </div>
                 </div>
@@ -175,20 +175,30 @@ function displaySuggestions() {
     });
 }
 
-// Gestion du chat (conservé de la version précédente)
+// Gestion du chat
 const chatModal = document.getElementById('chatModal');
+const openChat = document.getElementById('openChat');
 const closeChat = document.getElementById('closeChat');
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendMessage = document.getElementById('sendMessage');
 
-function addMessage(message, isUser = false, isLoading = false) {
+// Afficher/masquer le chat
+openChat.addEventListener('click', (e) => {
+    e.preventDefault();
+    chatModal.style.display = 'block';
+});
+
+closeChat.addEventListener('click', () => {
+    chatModal.style.display = 'none';
+});
+
+function addMessage(message, isUser = false) {
     const messageDiv = document.createElement('div');
-    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'} ${isLoading ? 'loading' : ''}`;
+    messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'}`;
     messageDiv.textContent = message;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-    return messageDiv;
 }
 
 async function sendToGemini(message) {
@@ -223,15 +233,12 @@ sendMessage.addEventListener('click', async () => {
     sendMessage.disabled = true;
 
     addMessage(message, true);
-    const loadingMessage = addMessage("En attente de réponse...", false, true);
     
     try {
         const response = await sendToGemini(message);
-        loadingMessage.remove();
         addMessage(response);
     } catch (error) {
-        loadingMessage.remove();
-        addMessage(`Erreur: ${error.message}`, false);
+        addMessage("Désolé, une erreur est survenue. Veuillez réessayer plus tard.");
     } finally {
         userInput.disabled = false;
         sendMessage.disabled = false;
@@ -250,4 +257,5 @@ document.addEventListener('DOMContentLoaded', () => {
     displayTweets();
     displayTrends();
     displaySuggestions();
+    chatModal.style.display = 'none';
 });
