@@ -3,35 +3,79 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mon E-commerce</title>
+    <title>Twitter Clone</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Navbar -->
-    <nav class="navbar">
-        <div class="logo">
-            <i class="fab fa-twitter"></i>
-        </div>
-        <div class="nav-links">
-            <a href="index.html"><i class="fas fa-home"></i> Accueil</a>
-            <a href="contact.php"><i class="fas fa-envelope"></i> Contact</a>
-            <a href="compte.php"><i class="fas fa-user"></i> Mon Compte</a>
-        </div>
-    </nav>
+    <div class="layout">
+        <!-- Sidebar -->
+        <nav class="sidebar">
+            <div class="logo">
+                <i class="fab fa-twitter"></i>
+            </div>
+            <div class="nav-items">
+                <a href="#" class="active"><i class="fas fa-home"></i> Accueil</a>
+                <a href="#"><i class="fas fa-search"></i> Explorer</a>
+                <a href="#"><i class="fas fa-bell"></i> Notifications</a>
+                <a href="#"><i class="fas fa-envelope"></i> Messages</a>
+                <a href="#"><i class="fas fa-bookmark"></i> Signets</a>
+                <a href="#"><i class="fas fa-user"></i> Profil</a>
+                <button class="tweet-btn">Tweeter</button>
+            </div>
+        </nav>
 
-    <!-- Liste des produits -->
-    <div class="products-container">
-        <h2>Pour vous</h2>
-        <div class="products-grid" id="products-grid">
-            <!-- Les produits seront chargés dynamiquement via JavaScript -->
-        </div>
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="header">
+                <h2>Accueil</h2>
+            </div>
+            
+            <!-- Tweet Box -->
+            <div class="tweet-box">
+                <img src="https://picsum.photos/50" alt="Profile" class="avatar">
+                <div class="tweet-input-container">
+                    <textarea placeholder="Quoi de neuf ?"></textarea>
+                    <div class="tweet-actions">
+                        <div class="tweet-attachments">
+                            <i class="far fa-image"></i>
+                            <i class="fas fa-poll"></i>
+                            <i class="far fa-smile"></i>
+                            <i class="far fa-calendar"></i>
+                        </div>
+                        <button class="tweet-submit">Tweeter</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tweet Feed -->
+            <div class="feed" id="tweet-feed">
+                <!-- Les tweets seront chargés dynamiquement via JavaScript -->
+            </div>
+        </main>
+
+        <!-- Trending Section -->
+        <aside class="trending">
+            <div class="search-box">
+                <i class="fas fa-search"></i>
+                <input type="text" placeholder="Rechercher sur Twitter">
+            </div>
+            
+            <div class="trends-container">
+                <h2>Tendances pour vous</h2>
+                <div class="trends-list" id="trends-list">
+                    <!-- Les tendances seront chargées dynamiquement -->
+                </div>
+            </div>
+
+            <div class="who-to-follow">
+                <h2>Suggestions</h2>
+                <div class="suggestions-list" id="suggestions-list">
+                    <!-- Les suggestions seront chargées dynamiquement -->
+                </div>
+            </div>
+        </aside>
     </div>
-
-    <!-- Bouton flottant du service client -->
-    <button class="chat-button" id="chatButton">
-        <i class="fas fa-message"></i>
-    </button>
 
     <!-- Chat modal -->
     <div class="chat-modal" id="chatModal">
@@ -39,9 +83,7 @@
             <h3>Messages</h3>
             <button class="close-button" id="closeChat">&times;</button>
         </div>
-        <div class="chat-messages" id="chatMessages">
-            <!-- Les messages seront affichés ici -->
-        </div>
+        <div class="chat-messages" id="chatMessages"></div>
         <div class="chat-input">
             <input type="text" id="userInput" placeholder="Commencez une discussion...">
             <button id="sendMessage">

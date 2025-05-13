@@ -1,109 +1,198 @@
-// Tableau de noms de produits
-const productNames = [
-    "Smartphone Pro",
-    "Laptop Elite",
-    "Casque Audio Premium",
-    "Montre Connectée",
-    "Enceinte Bluetooth",
-    "Tablette Tactile",
-    "Appareil Photo",
-    "Drone HD",
-    "Console de Jeu",
-    "Clavier Mécanique"
+// Données simulées pour les tweets
+const tweets = [
+    {
+        id: 1,
+        author: "John Doe",
+        handle: "@johndoe",
+        avatar: "https://picsum.photos/50?random=1",
+        content: "Je viens de lancer mon nouveau site web ! #webdev #coding",
+        image: "https://picsum.photos/600/400?random=1",
+        time: "2h",
+        stats: {
+            replies: 15,
+            retweets: 30,
+            likes: 120
+        }
+    },
+    {
+        id: 2,
+        author: "Jane Smith",
+        handle: "@janesmith",
+        avatar: "https://picsum.photos/50?random=2",
+        content: "Belle journée pour une randonnée ! #nature #outdoors",
+        image: "https://picsum.photos/600/400?random=2",
+        time: "3h",
+        stats: {
+            replies: 23,
+            retweets: 56,
+            likes: 248
+        }
+    },
+    {
+        id: 3,
+        author: "Tech Insights",
+        handle: "@techinsights",
+        avatar: "https://picsum.photos/50?random=3",
+        content: "Les dernières avancées en IA sont vraiment impressionnantes ! #AI #tech",
+        time: "6h",
+        stats: {
+            replies: 7,
+            retweets: 12,
+            likes: 89
+        }
+    }
 ];
 
-// Tableau de descriptions
-const descriptions = [
-    "Un produit innovant avec des fonctionnalités avancées",
-    "Design élégant et performances exceptionnelles",
-    "Qualité sonore premium pour une expérience immersive",
-    "Technologie de pointe pour un usage quotidien",
-    "Idéal pour les amateurs de technologie",
-    "Parfait pour le travail et les loisirs",
-    "Captures des moments inoubliables",
-    "Vue aérienne spectaculaire",
-    "Divertissement sans limites",
-    "Confort et précision pour les gamers"
+// Données simulées pour les tendances
+const trends = [
+    {
+        category: "Tendances",
+        tag: "#JavaScript",
+        tweets: "155.5K tweets"
+    },
+    {
+        category: "Technologies",
+        tag: "TypeScript",
+        tweets: "63.4K tweets"
+    },
+    {
+        category: "Sports",
+        tag: "#WorldCup",
+        tweets: "442K tweets"
+    },
+    {
+        category: "Business",
+        tag: "#Startup",
+        tweets: "28.5K tweets"
+    },
+    {
+        category: "Entertainment",
+        tag: "#NewMusic",
+        tweets: "86.7K tweets"
+    }
 ];
 
-// Fonction pour générer un prix aléatoire entre 50 et 1000 euros
-function getRandomPrice() {
-    return Math.floor(Math.random() * (1000 - 50 + 1)) + 50;
-}
+// Données simulées pour les suggestions
+const suggestions = [
+    {
+        name: "Mike Johnson",
+        handle: "@mikej",
+        avatar: "https://picsum.photos/50?random=4"
+    },
+    {
+        name: "Sarah Williams",
+        handle: "@sarahw",
+        avatar: "https://picsum.photos/50?random=5"
+    },
+    {
+        name: "Tech Insights",
+        handle: "@techinsights",
+        avatar: "https://picsum.photos/50?random=6"
+    }
+];
 
-// Fonction pour générer un produit aléatoire
-function generateRandomProduct() {
-    const randomName = productNames[Math.floor(Math.random() * productNames.length)];
-    const randomDescription = descriptions[Math.floor(Math.random() * descriptions.length)];
-    const randomPrice = getRandomPrice();
-    
-    return {
-        name: randomName,
-        description: randomDescription,
-        price: randomPrice,
-        image: `https://picsum.photos/300/200?random=${Math.random()}`
-    };
-}
+// Fonction pour afficher les tweets
+function displayTweets() {
+    const feed = document.getElementById('tweet-feed');
+    feed.innerHTML = '';
 
-// Fonction pour afficher les produits
-function displayProducts() {
-    const productsGrid = document.getElementById('products-grid');
-    productsGrid.innerHTML = '';
-
-    // Générer 10 produits aléatoires
-    for (let i = 0; i < 10; i++) {
-        const product = generateRandomProduct();
+    tweets.forEach(tweet => {
+        const tweetElement = document.createElement('div');
+        tweetElement.className = 'tweet';
         
-        const productCard = document.createElement('div');
-        productCard.className = 'product-card';
+        let imageHtml = tweet.image ? `<img src="${tweet.image}" alt="Tweet image" class="tweet-image">` : '';
         
-        productCard.innerHTML = `
-            <img src="${product.image}" alt="${product.name}">
-            <h3>${product.name}</h3>
-            <p>${product.description}</p>
-            <p class="price">${product.price}€</p>
-            <button class="add-to-cart">Ajouter au panier</button>
+        tweetElement.innerHTML = `
+            <div class="tweet-avatar">
+                <img src="${tweet.avatar}" alt="${tweet.author}">
+            </div>
+            <div class="tweet-content">
+                <div class="tweet-header">
+                    <span class="author">${tweet.author}</span>
+                    <span class="handle">${tweet.handle}</span>
+                    <span class="time">${tweet.time}</span>
+                </div>
+                <div class="tweet-text">${tweet.content}</div>
+                ${imageHtml}
+                <div class="tweet-actions">
+                    <div class="tweet-action">
+                        <i class="far fa-comment"></i>
+                        <span>${tweet.stats.replies}</span>
+                    </div>
+                    <div class="tweet-action">
+                        <i class="fas fa-retweet"></i>
+                        <span>${tweet.stats.retweets}</span>
+                    </div>
+                    <div class="tweet-action">
+                        <i class="far fa-heart"></i>
+                        <span>${tweet.stats.likes}</span>
+                    </div>
+                    <div class="tweet-action">
+                        <i class="fas fa-share"></i>
+                    </div>
+                </div>
+            </div>
         `;
         
-        productsGrid.appendChild(productCard);
-    }
+        feed.appendChild(tweetElement);
+    });
 }
 
-// Appeler la fonction d'affichage au chargement de la page
-document.addEventListener('DOMContentLoaded', displayProducts);
+// Fonction pour afficher les tendances
+function displayTrends() {
+    const trendsList = document.getElementById('trends-list');
+    trendsList.innerHTML = '';
 
-// Gestion du chat
-const chatButton = document.getElementById('chatButton');
+    trends.forEach(trend => {
+        const trendElement = document.createElement('div');
+        trendElement.className = 'trend-item';
+        trendElement.innerHTML = `
+            <div class="trend-category">${trend.category}</div>
+            <div class="trend-tag">${trend.tag}</div>
+            <div class="trend-tweets">${trend.tweets}</div>
+        `;
+        trendsList.appendChild(trendElement);
+    });
+}
+
+// Fonction pour afficher les suggestions
+function displaySuggestions() {
+    const suggestionsList = document.getElementById('suggestions-list');
+    suggestionsList.innerHTML = '';
+
+    suggestions.forEach(suggestion => {
+        const suggestionElement = document.createElement('div');
+        suggestionElement.className = 'suggestion-item';
+        suggestionElement.innerHTML = `
+            <img src="${suggestion.avatar}" alt="${suggestion.name}" class="suggestion-avatar">
+            <div class="suggestion-info">
+                <div class="suggestion-name">${suggestion.name}</div>
+                <div class="suggestion-handle">${suggestion.handle}</div>
+            </div>
+            <button class="follow-button">Suivre</button>
+        `;
+        suggestionsList.appendChild(suggestionElement);
+    });
+}
+
+// Gestion du chat (conservé de la version précédente)
 const chatModal = document.getElementById('chatModal');
 const closeChat = document.getElementById('closeChat');
 const chatMessages = document.getElementById('chatMessages');
 const userInput = document.getElementById('userInput');
 const sendMessage = document.getElementById('sendMessage');
 
-// Ouvrir le chat
-chatButton.addEventListener('click', () => {
-    chatModal.style.display = 'block';
-});
-
-// Fermer le chat
-closeChat.addEventListener('click', () => {
-    chatModal.style.display = 'none';
-});
-
-// Fonction pour ajouter un message dans le chat
 function addMessage(message, isUser = false, isLoading = false) {
     const messageDiv = document.createElement('div');
     messageDiv.className = `message ${isUser ? 'user-message' : 'bot-message'} ${isLoading ? 'loading' : ''}`;
     messageDiv.textContent = message;
     chatMessages.appendChild(messageDiv);
     chatMessages.scrollTop = chatMessages.scrollHeight;
-    return messageDiv; // Retourner l'élément pour pouvoir le modifier plus tard
+    return messageDiv;
 }
 
-// Fonction pour envoyer un message à l'API Gemini
 async function sendToGemini(message) {
     try {
-        console.log('Envoi du message:', message);
         const response = await fetch('api/gemini.php', {
             method: 'POST',
             headers: {
@@ -112,11 +201,7 @@ async function sendToGemini(message) {
             body: JSON.stringify({ message })
         });
         
-        console.log('Status:', response.status);
-        
-        // Attendre la réponse complète
         const data = await response.json();
-        console.log('Réponse reçue:', data);
         
         if (!data.response) {
             throw new Error('Format de réponse invalide');
@@ -124,50 +209,45 @@ async function sendToGemini(message) {
         
         return data.response;
     } catch (error) {
-        console.error('Erreur détaillée:', error);
+        console.error('Erreur:', error);
         throw error;
     }
 }
 
-// Gestion de l'envoi des messages
 sendMessage.addEventListener('click', async () => {
     const message = userInput.value.trim();
     if (!message) return;
 
-    // Désactiver l'interface pendant l'envoi
     userInput.value = '';
     userInput.disabled = true;
     sendMessage.disabled = true;
 
-    // Afficher le message de l'utilisateur
     addMessage(message, true);
-
-    // Créer un message de chargement
     const loadingMessage = addMessage("En attente de réponse...", false, true);
     
     try {
-        // Attendre la réponse sans limite de temps
         const response = await sendToGemini(message);
-        
-        // Supprimer le message de chargement et afficher la réponse
         loadingMessage.remove();
         addMessage(response);
     } catch (error) {
-        // Supprimer le message de chargement et afficher l'erreur
         loadingMessage.remove();
         addMessage(`Erreur: ${error.message}`, false);
-        console.error('Erreur:', error);
     } finally {
-        // Réactiver l'interface
         userInput.disabled = false;
         sendMessage.disabled = false;
         userInput.focus();
     }
 });
 
-// Envoyer le message avec la touche Entrée
 userInput.addEventListener('keypress', (e) => {
     if (e.key === 'Enter') {
         sendMessage.click();
     }
-}); 
+});
+
+// Initialisation
+document.addEventListener('DOMContentLoaded', () => {
+    displayTweets();
+    displayTrends();
+    displaySuggestions();
+});
